@@ -7,8 +7,10 @@ package com.example.saveaudiofilesd;
 public class Constants {
 
     // Files
-    //public static final String DOWNLOAD_AUDIO_URL = "http://www.noiseaddicts.com/samples_1w72b820/272.mp3";
-   public static final String DOWNLOAD_AUDIO_URL = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
+   // public static final String DOWNLOAD_AUDIO_URL = "http://www.noiseaddicts.com/samples_1w72b820/272.mp3";
+   // public static final String DOWNLOAD_AUDIO_URL = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3";
+    //public static final String DOWNLOAD_AUDIO_URL = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3";
+     public static final String DOWNLOAD_AUDIO_URL = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
     public static final String FILE_NAME = extractFilename(DOWNLOAD_AUDIO_URL);
     public static final String TEMP_FILE_NAME = "temp";
     public static final String FILE_EXT = ".mp3";

@@ -1,7 +1,9 @@
 package com.example.saveaudiofilesd;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -61,6 +63,9 @@ public class MainActivity extends AppCompatActivity implements OnDownloadListene
             case R.id.play:
                 playClicked();
                 break;
+                case R.id.btn_downlaod_song:
+                startActivity(new Intent(this,DownlaodSongActivity.class));
+                break;
             default:
                 updateUI("Unknown Click");
         }
@@ -72,24 +77,12 @@ public class MainActivity extends AppCompatActivity implements OnDownloadListene
             if(decrypt!=null && decrypt.length>0){
                 playAudio(FileUtils.getTempFileDescriptor(this,decrypt ));
             }
-            getAllfileThisFolder();
         } catch (IOException e) {
             updateUI("Error Playing Audio.\nException: " + e.getMessage());
             return;
         }
     }
 
-    private void getAllfileThisFolder() {
-        String path = FileUtils.getDirPath(this);
-        Log.e("Files", "Path: " + path);
-        File directory = new File(path);
-        File[] files = directory.listFiles();
-        Log.e("Files", "Size: "+ files.length);
-        for (int i = 0; i < files.length; i++)
-        {
-            Log.e("Files", "FileName:" + files[i].getName());
-        }
-    }
 
     private void downloadAudio() {
         // Delete the old file //
@@ -165,7 +158,11 @@ public class MainActivity extends AppCompatActivity implements OnDownloadListene
         updateUI("File Download Error");
     }
 
-
+    @Override
+    protected void onStop() {
+        super.onStop();
+        player.destroyPlayer();
+    }
 
     @Override
     protected void onDestroy() {
@@ -230,4 +227,6 @@ public class MainActivity extends AppCompatActivity implements OnDownloadListene
             progressbar.setVisibility(ProgressBar.GONE);
         }
     }
+
+
 }

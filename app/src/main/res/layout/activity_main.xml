@@ -7,14 +7,6 @@
     android:orientation="vertical"
     android:padding="20dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="20dp"
-        android:gravity="center"
-        android:text="[ Tap the buttons in order for the demo ]"
-        android:textColor="@android:color/holo_red_dark" />
 
     <Button
         android:id="@+id/download"
@@ -22,6 +14,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:gravity="left|center"
+        android:layout_marginTop="20dp"
         android:onClick="onClick"
         android:text="1. Download Audio" />
 
@@ -51,6 +44,14 @@
         android:gravity="left|center"
         android:onClick="onClick"
         android:text="4. Play" />
+    <Button
+        android:id="@+id/btn_downlaod_song"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="left|center"
+        android:onClick="onClick"
+        android:text="5. Donwlaod list" />
 
     <TextView
         android:id="@+id/statusTv"

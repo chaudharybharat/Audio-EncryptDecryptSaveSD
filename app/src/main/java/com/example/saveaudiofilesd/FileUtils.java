@@ -1,6 +1,7 @@
 package com.example.saveaudiofilesd;
 
 import android.content.Context;
+import android.os.Environment;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -72,21 +73,36 @@ public class FileUtils {
         fos.close();
         return tempFile;
     }
-
+    @NonNull
+    public static File createTempFile(Context context, byte[] decrypted,String file_name) throws IOException {
+        File tempFile = File.createTempFile(TEMP_FILE_NAME, file_name, context.getCacheDir());
+        tempFile.deleteOnExit();
+        FileOutputStream fos = new FileOutputStream(tempFile);
+        fos.write(decrypted);
+        fos.close();
+        return tempFile;
+    }
     public static FileDescriptor getTempFileDescriptor(Context context, byte[] decrypted) throws IOException {
         File tempFile = FileUtils.createTempFile(context, decrypted);
         FileInputStream fis = new FileInputStream(tempFile);
         return fis.getFD();
     }
-
+    public static FileDescriptor getTempFileDescriptor(Context context, byte[] decrypted,String file_name) throws IOException {
+        File tempFile = FileUtils.createTempFile(context, decrypted,file_name);
+        FileInputStream fis = new FileInputStream(tempFile);
+        return fis.getFD();
+    }
     public static final String getDirPath(Context context) {
+
         return context.getDir(DIR_NAME, Context.MODE_PRIVATE).getAbsolutePath();
     }
 
     public static final String getFilePath(Context context) {
         return getDirPath(context) + File.separator + FILE_NAME;
     }
-
+    public static final String getFilePath(Context context,String file_name) {
+        return getDirPath(context) + File.separator + file_name;
+    }
     public static final void deleteDownloadedFile(Context context) {
         File file = new File(getFilePath(context));
         if (null != file && file.exists()) {
