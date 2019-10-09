@@ -1,83 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ak93.exoplayerexample.MainActivity">
+    android:animateLayoutChanges="true"
+    android:orientation="vertical"
+    android:padding="20dp">
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#CC000000"
-        android:orientation="vertical"
-        android:id="@+id/media_controller"
-        android:layout_alignParentBottom="true"
-        >
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:text="[ Tap the buttons in order for the demo ]"
+        android:textColor="@android:color/holo_red_dark" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingTop="4dip"
-            android:orientation="horizontal">
+    <Button
+        android:id="@+id/download"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="left|center"
+        android:onClick="onClick"
+        android:text="1. Download Audio" />
 
-            <ImageButton android:id="@+id/btnPlay"
-                style="@android:style/MediaButton.Play"
-                />
+    <Button
+        android:id="@+id/encrypt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="left|center"
+        android:onClick="onClick"
+        android:text="2. Encrypt Audio" />
 
-        </LinearLayout>
+    <Button
+        android:id="@+id/decrypt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="left|center"
+        android:onClick="onClick"
+        android:text="3. Decrypt Audio" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+    <Button
+        android:id="@+id/play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="left|center"
+        android:onClick="onClick"
+        android:text="4. Play" />
 
-            <TextView android:id="@+id/time_current"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:paddingTop="4dip"
-                android:paddingLeft="4dip"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingRight="4dip"
-                android:textColor="#ffffff"
-                android:text="00:00" />
+    <TextView
+        android:id="@+id/statusTv"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="0.7"
+        android:gravity="center"
+        android:textColor="@android:color/holo_green_dark"
+        android:textSize="20sp" />
 
-            <SeekBar
-                android:id="@+id/mediacontroller_progress"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="0dip"
-                android:layout_weight="1"
-                android:layout_height="32dip" />
 
-            <TextView android:id="@+id/player_end_time"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:paddingTop="4dip"
-                android:paddingRight="4dip"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="4dip"
-                android:textColor="#ffffff"
-                android:text="99:99" />
-
-            <ImageButton android:id="@+id/fullscreen"
-                android:layout_marginTop="-7dp"
-                android:paddingTop="4dip"
-                android:paddingBottom="4dip"
-                android:paddingLeft="10dip"
-                android:paddingRight="4dip"
-                android:layout_gravity="top"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-</RelativeLayout>
+    <ProgressBar
+        android:id="@+id/progress_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:indeterminate="true"
+        android:max="100"
+        android:layout_gravity="center_vertical"
+        android:minHeight="50dp"
+        android:minWidth="200dp"
+        android:progress="1"
+        android:visibility="gone"
+        android:layout_centerVertical="true" />
+</LinearLayout>
